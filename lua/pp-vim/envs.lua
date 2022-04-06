@@ -3,7 +3,10 @@ local M = {}
 
 local function list_envs()
   package.loaded['envs'] = nil
-  local v  = require 'envs'
+  local s, v  = pcall(require,'envs')
+  if (s) then
+    return nil
+  end
   local keys = {}
   for key, _ in pairs(v) do
     table.insert(keys, key)
