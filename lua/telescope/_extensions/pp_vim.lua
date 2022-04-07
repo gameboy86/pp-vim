@@ -15,24 +15,21 @@ local function enter(prompt_bufnr)
 end
 
 
-local default_opts = {
-  layout_strategy="vertical",
-  layout_config={
-    height=10,
-    width=0.3,
-  },
-  sorting_strategy="ascending",
-  finder=finders.new_table(),
-  sorter=sorters.get_generic_fuzzy_sorter({}),
-  attach_mappings = function(prompt_bufnr, map)
-    map("i", "<CR>", enter)
-    return true
-  end,
-}
-
-
 local function make_picker(opts)
-  opts = default_opts
+  local opts = {
+    layout_strategy="vertical",
+    layout_config={
+      height=10,
+      width=0.3,
+    },
+    sorting_strategy="ascending",
+    finder=finders.new_table(),
+    sorter=sorters.get_generic_fuzzy_sorter({}),
+    attach_mappings = function(prompt_bufnr, map)
+      map("i", "<CR>", enter)
+      return true
+    end,
+  }
   local make_finder = function()
     local en = envs.list_envs()
     return finders.new_table {
