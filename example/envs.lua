@@ -1,5 +1,9 @@
 local M = {}
 
-M.DP = {}
-M.DD = {}
+M.DEV = {
+  URL="https://gorest.co.in/public/v2"
+}
+M.PROD = {
+  URL="https://gorest.co.in/public/v1"
+}
 return M

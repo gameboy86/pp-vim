@@ -34,6 +34,18 @@ local function scan(path, search_pattern)
   return dirs
 end
 
+
+local function contains(table, val)
+   for i=1,#table do
+      if table[i] == val then
+         return true
+      end
+   end
+   return false
+end
+
+
 M.split = split
 M.scan = scan
+M.contains = contains
 return M
