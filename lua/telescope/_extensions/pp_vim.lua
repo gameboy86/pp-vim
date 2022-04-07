@@ -6,6 +6,7 @@ local actions = require "telescope.actions"
 
 local envs = require "pp-vim.envs"
 local pp = require "pp-vim"
+local utils = require "pp-vim.utils"
 
 
 local function enter(prompt_bufnr)
@@ -17,12 +18,13 @@ end
 
 local function make_picker(opts)
   local make_finder = function()
-    local en = envs.list_envs()
-    if not en then
+    local st, er = pcall(envs.list_envs)
+    if not st then
+      utils.notify_error(er)
       return
     end
     return finders.new_table {
-        results = en,
+        results = er,
     }
   end
   local initial_finder = make_finder()

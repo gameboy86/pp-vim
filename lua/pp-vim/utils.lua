@@ -45,7 +45,18 @@ local function contains(table, val)
 end
 
 
+local function notify_error(message)
+  local s, notify = pcall(require, "notify")
+  if not s then
+    print(message)
+  else
+    notify(message, "error")
+  end
+end
+
+
 M.split = split
 M.scan = scan
 M.contains = contains
+M.notify_error = notify_error
 return M
