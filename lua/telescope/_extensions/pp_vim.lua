@@ -16,7 +16,7 @@ end
 
 
 local function make_picker(opts)
-  local opts = {
+  opts = opts or {
     layout_strategy="vertical",
     layout_config={
       height=10,
