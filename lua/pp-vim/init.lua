@@ -21,7 +21,6 @@ end
 
 
 local function link_endpoints(env, env_file)
-  print(env, env_file)
   local st, er = pcall(envs.list_envs)
   if not st then
     notify_error(er)

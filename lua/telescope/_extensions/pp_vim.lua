@@ -10,7 +10,6 @@ local pp = require "pp-vim"
 
 local function enter(prompt_bufnr)
   local selected = action_state.get_selected_entry()
-  print(selected[1])
   pp.pp_link_endpoints(selected[1])
   actions.close(prompt_bufnr)
 end
