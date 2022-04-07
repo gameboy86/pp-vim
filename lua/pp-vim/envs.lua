@@ -4,7 +4,7 @@ local M = {}
 local function list_envs()
   package.loaded['envs'] = nil
   local s, v  = pcall(require,'envs')
-  if (s) then
+  if not s then
     return nil
   end
   local keys = {}
@@ -17,10 +17,10 @@ end
 M.list_envs = list_envs
 
 
-local function create_env_file(env, path)
+local function create_env_file(env, path, env_file)
   package.loaded['envs'] = nil
   local v = require 'envs'
-  local file = io.open(path.."/.pp_env", "w")
+  local file = io.open(path.."/"..env_file, "w")
   for key, val in pairs(v[env]) do
     file:write(""..key.."="..val.."\n")
   end
